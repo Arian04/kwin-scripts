@@ -16,12 +16,14 @@ The scripts are intended to be used under KDE Plasma.
   - [Virtual Desktops Only On Primary](#virtual-desktops-only-on-primary)
 - [Experimental](#experimental)
 - [License](#license)
+- [Acknowledgements](#acknowledgements)
 
 ## Installation
 
 ### From source
 
 To install a script, run:
+
 ```
 ./helper.sh install name-of-the-script
 ```
@@ -169,3 +171,7 @@ At the moment, there is a JS-timer-like function for delayed code execution, a f
 ## License
 
 [GNU General Public License v3.0](LICENSE)
+
+## Acknowledgements
+
+- Github user [wsdfhjxc](https://github.com/wsdfhjxc) for doing the initial work to create these scripts
