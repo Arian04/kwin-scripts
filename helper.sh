@@ -37,7 +37,22 @@ package() {
 }
 
 show-dev-console() {
-    qdbus org.kde.plasmashell /PlasmaShell showInteractiveKWinConsole
+    # Try to use the command for Plasma versions >=5.23
+    RESULT=$(plasma-interactiveconsole --kwin)
+
+    # If that fails, try to run the command for Plasma versions <5.23
+    if [ "$RESULT" != 0 ]; then
+        RESULT=$(qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.showInteractiveKWinConsole)
+
+        # If that also fails, plasma may have removed the >=5.23 command as well in the future
+        if [ "$RESULT" != 0 ]; then
+            printerr "Failed to show dev console."
+        fi
+    fi
+}
+
+printerr() {
+    printf "%s\n" "$*" >&2
 }
 
 main() {
