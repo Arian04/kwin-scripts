@@ -23,14 +23,23 @@ upgrade() {
 package() {
     local scriptName=$1
 
-    [[ ! -d "$scriptName" ]] && {
-        echo "No such script '$scriptName'"
+    cd "$scriptName" || {
+        printerr "Failed to \`cd\` into '$scriptName'"
         exit 1
     }
 
-    cd "$scriptName" || exit 1
+    # Check if directory contains necessary files
+    if [ ! -d "contents" ]; then
+        printerr "'contents' directory is missing in target directory"
+        exit 1
+    fi
+    if [ ! -f "metadata.desktop" ]; then
+        printerr "'metadata.desktop' file is missing in target directory"
+        exit 1
+    fi
 
-    local scriptVersion=$(grep -Po "Version=\K(.*)" metadata.desktop)
+    local scriptVersion
+    scriptVersion=$(grep -Po "Version=\K(.*)" metadata.desktop)
     zip -r "$scriptName-$scriptVersion.kwinscript" contents metadata.desktop
 
     cd ..
