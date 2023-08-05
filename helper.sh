@@ -68,7 +68,7 @@ main() {
     local command=$1
 
     case $command in
-        install|uninstall|upgrade|package)
+        install | uninstall | upgrade | package)
             [[ -z "$2" ]] && {
                 printUsage
                 exit 1

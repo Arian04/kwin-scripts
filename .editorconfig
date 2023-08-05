@@ -1,0 +1,13 @@
+# http://editorconfig.org
+root = true
+
+# Formatted using shfmt (https://github.com/mvdan/sh)
+[*.sh]
+indent_style = space
+indent_size = 4
+switch_case_indent = true
+space_redirects = true
+keep_padding = true
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = false
