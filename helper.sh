@@ -63,4 +63,4 @@ main() {
     esac
 }
 
-main $*
+main "$@"
