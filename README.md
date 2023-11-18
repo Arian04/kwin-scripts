@@ -4,6 +4,12 @@ This is a repository with some KWin scripts.
 
 The scripts are intended to be used under KDE Plasma.
 
+## NOTE ABOUT THIS FORK
+
+I forked hoping to fix some issues, mainly the one where the "virtual desktops only on primary" script treats the wrong monitor as the "primary" one when running under Wayland.
+
+The problem is that after hours and hours of sifting through documentation I literally couldn't find any possible way of finding the value for the primary monitor under Wayland. Under X11 it was always just 0. The only idea I could come up with after sifting through docs, source code, and obscure (mostly irrelevant) forum posts is to have the user run a script beforehand that parses `kscreen-doctor -j` to get the primary monitor and set it in the script, but that feels like a hacky solution. Keep in mind that at the time of updating this README, there might now be a way to query for this value. I gave up on this a while ago and just wanted to leave some context here in case anyone needs it, so this info may be outdated, especially by the time someone actually reads it. 
+
 ## Table of Contents
 
 - [Installation](#installation)
